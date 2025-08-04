@@ -1,0 +1,57 @@
+version: "3.9"
+
+services:
+  ollama:
+    image: ollama/ollama
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+    restart: unless-stopped
+    networks:
+      - agent-mesh
+  
+  web:
+    container_name: web
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    ports:
+      - "5173:5173"
+    working_dir: /app/apps/web
+    volumes:
+      - .:/app
+    command: npm run dev
+    env_file:
+      - .env
+    networks:
+      - agent-mesh
+    depends_on:
+      - agents
+      - ollama
+      
+  agents:
+    container_name: agents
+    build:
+      context: .
+      dockerfile: apps/agents/Dockerfile
+    ports:
+      - "2024:2024"
+    working_dir: /app/apps/agents
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    command: npm run dev
+    depends_on:
+      - ollama
+    networks:
+      - agent-mesh
+
+volumes:
+  ollama-data:
+
+networks:
+  agent-mesh:
+    driver: bridge

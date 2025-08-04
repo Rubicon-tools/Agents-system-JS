@@ -18,13 +18,4 @@ Ollama for local LLM models
 
 Next.js frontend
 
-
-## 📁 Project Structure
-
-apps/
-├── agents/ # Contains all LangGraphJS agents
-│ ├── src/
-│ │ ├── react-agent/ # React agent graph using Tavily + custom tools
-│ │ └── supervisor/ # Supervisor directory,a graph that invokes sub-agents
-├── web/ # frontend UI for interacting with agents
-docker-compose.yml # Multi-container setup for local development
+make sure to go through the .env file

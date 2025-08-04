@@ -4,7 +4,6 @@ This repository contains a full-stack Dockerized AI Agent system using [LangGrap
 
 - `agents` is a LangGraph-powered agents solution with Supervisor agent with a simple ReAct-agent with tavily search tool ready to be scaled.
 - `web` is a Next.js frontend for interacting with agents.
-- 
 
 ---
 ## 📦 Used Dependencies

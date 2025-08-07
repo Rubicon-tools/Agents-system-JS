@@ -17,4 +17,15 @@ Ollama for local LLM models
 
 Next.js frontend
 
-make sure to go through the .env file
+make sure to go through the .env file and langgraph.json file
+
+```bash
+ docker compose up -b to build and run the containers
+```
+
+to run concurrently both agents and web : 
+in the root folder:
+```bash
+npm install && npm run dev
+```
+to run them independently , do the same but from inside apps/agents and apps/web
